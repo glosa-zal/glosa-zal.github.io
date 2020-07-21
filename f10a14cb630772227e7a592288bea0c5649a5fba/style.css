@@ -31,7 +31,7 @@ body {
 }
 .tmt {
 	/*background-color: rgb(210,210,210);*/
-	background-image: url("/slike/menubackground.png");
+	background-image: url("menubackground.png");
 	margin-top: auto;
 	padding: 0;
 }
