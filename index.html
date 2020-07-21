@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Geslo</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Spletna stran sindikalne skupine glosa-zal.">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" />
+
+		<style type="text/css">
+			.lightbox {
+				zoom: 1.5;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(126, 126, 126, 0.6);
+				text-align: center;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="loginbox" class="lightbox" >
+			<div class="horizontal">
+				<div class="vertical">
+					<div class="box">
+						<input style="margin: 16px; text-align: center;" id="password" type="password" placeholder="Geslo" /> <br />
+						<button id="loginbutton" type="button">Enter</button>
+						<p id="wrongPassword" style="display: none">Napačno geslo</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="https://rawcdn.githack.com/chrisveness/crypto/7067ee62f18c76dd4a9d372a00e647205460b62b/sha1.js"></script>
+
+		<script type="text/javascript">
+		"use strict";
+		function loadPage(pwd) {
+			var hash= pwd;
+			hash= Sha1.hash(pwd);
+			var url= hash + "/index.html";
+			$.ajax({
+				url : url,
+				dataType : "html",
+				success : function(data) {
+					window.location= url;
+				},
+				error : function(xhr, ajaxOptions, thrownError) {
+					parent.location.hash= hash;
+					//$("#wrongPassword").show();
+					$("#password").attr("placeholder","Napačno geslo");
+					$("#password").val("");
+				}
+			});
+		}
+		$("#loginbutton").on("click", function() {
+			loadPage($("#password").val());
+		});
+		$("#password").keypress(function(e) {
+			if (e.which == 13) {
+
+				loadPage($("#password").val());
+			}
+		});
+		$("#password").focus();
+
+		</script>
+	</body>
+</html>
