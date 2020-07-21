@@ -19,10 +19,6 @@ body {
 	background-color: rgba(215,222,224,0.9);
 }
 /* Meni */
-.logo-ma1 {
-	width: auto;
-	height: auto;
-}
 .logo-ma2 {
 	max-width: 30em;
 	max-height: 20em;
@@ -80,10 +76,10 @@ a:hover.em {
 	padding-top: 60px;
 	padding-bottom: 60px;
 	padding-left: 1%;
-	background-color: rgb(230,230,230);
+	background-color: rgb(0,0,0);
 }
 #rightcol {
-	background-color: rgb(230,230,230);
+	background-color: rgb(0,0,0);
 }
 a.index-text {
 	color: rgb(20,20,20);
